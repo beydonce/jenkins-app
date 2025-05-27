@@ -15,7 +15,7 @@ pipeline {
                     node --version
                     npm --version
                     npm ci
-                    npm run build
+                    npm run c xbuild
                     ls -la
                 '''
             }   
@@ -32,6 +32,7 @@ pipeline {
                 sh '''
                     echo "Test stage"
                     test -f build/index.html && echo "Found file" || echo "File not founded."
+                    echo "Starting tests ..."
                     npm test
                 '''
             }
