@@ -2,6 +2,8 @@ pipeline {
     agent any
 
     stages {
+        /*
+
         stage('Build') {
             agent {
                 docker {
@@ -18,35 +20,35 @@ pipeline {
                     npm run build
                     ls -la
                 '''
-            }   
+            }
         }
+        */
 
-        stage('Test'){
+        stage('Test') {
             agent {
                 docker {
                     image 'node:18-alpine'
                     reuseNode true
                 }
             }
-            steps{
+
+            steps {
                 sh '''
-                    echo "Test stage"
-                    test -f build/index.html && echo "Found file" || echo "File not founded."
-                    echo "Starting tests ..."
+                    #test -f build/index.html
                     npm test
                 '''
             }
         }
 
-        stage('E2E'){
+        stage('E2E') {
             agent {
                 docker {
-                    image 'mcr.microsoft.com/playwright:v1.52.0-noble'
+                    image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
                     reuseNode true
-                    
                 }
             }
-            steps{
+
+            steps {
                 sh '''
                     npm install serve
                     node_modules/.bin/serve -s build &
