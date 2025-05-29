@@ -50,7 +50,7 @@ pipeline {
 
             steps {
                 sh '''
-                    echo "Strting E2E testing ..."
+                    echo "Strting E2E testing ...."
                     npm install serve
                     node_modules/.bin/serve -s build &
                     sleep 10
