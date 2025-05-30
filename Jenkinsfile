@@ -99,7 +99,9 @@ pipeline {
                 '''
             }
 
-            stage('prod E2E') {
+        }
+
+        stage('prod E2E') {
                     agent {
                         docker {
                             image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
@@ -120,7 +122,6 @@ pipeline {
                             publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'Playwright e2e', reportTitles: '', useWrapperFileDirectly: true])
                         }
                     }
-            }
         }
         
         
