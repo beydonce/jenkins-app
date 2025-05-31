@@ -54,6 +54,7 @@ pipeline {
                     }       
                     
                 }
+                
 
                 stage('E2E') {
                     agent {
@@ -98,6 +99,12 @@ pipeline {
                 '''
             }
 
+        }
+
+        stage("Aproval") {
+            steps {
+                input "Do you wish to deploy to production ?", ok: "Yes, I am sure!"
+            }
         }
 
         stage('Deploy prod') {
