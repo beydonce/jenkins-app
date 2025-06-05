@@ -1,4 +1,4 @@
-// my pipeline
+// my cicd pipeline
 pipeline {
     agent any
 
